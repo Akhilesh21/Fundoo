@@ -46,4 +46,25 @@ class Auth extends CI_Controller
         $admin = 'root';
         $password = 'Admin@1234';
 
-   
+        try {
+            $object = new PDO("mysql:host=$host;dbname=$db", $admin, $password);
+            if (isset($_POST['email']) && isset($_POST['password'])) {
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                $query = "SELECT * FROM registration WHERE email='$email' AND password = '$password'";
+                $statement = $object->prepare($query);
+                $statement->execute();
+                if ($statement->rowCount() > 0) {
+                    echo $email;
+                    $dbobject = null;
+                } else {
+                    echo "user doesn't exist";
+                }
+
+            }
+        } catch (PDOException $e) {
+            echo "connection failure";
+        }
+
+    }
+}
