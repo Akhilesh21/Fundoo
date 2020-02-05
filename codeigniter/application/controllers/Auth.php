@@ -12,4 +12,10 @@ class Auth extends CI_Controller
     {
         $this->load->view('register');
     }
-  
+    public function registerdata()
+    {
+        $user = 'root';
+        $db = 'Sample';
+        $pwd = 'Admin@1234';
+        $host = 'localhost';
+   
