@@ -38,4 +38,5 @@ class Auth extends CI_Controller
             echo "connection failure";
         }
     }
-   
+    public function logindata()
+  
