@@ -1,32 +1,3 @@
-<?php
-$host = 'localhost';
-$db = 'Sample';
-$admin = 'root';
-$password = 'Admin@1234';
-
-try{
-    $object = new PDO("mysql:host=$host;dbname=$db",$admin,$password);
-      if(isset($_POST['email'])&&isset($_POST['password'])){
-           $email = $_POST['email'];
-           $id = $_POST['password'];
-           $query = "SELECT * FROM table1 WHERE email='$email' AND ID = '$id'";
-           $statement = $object->prepare($query);
-           $statement->execute();
-           if($statement->rowCount()>0){
-             echo $email;
-             $dbobject = null;
-           }else
-           echo "user doesn't exist";
-       }
-            }
-catch(PDOException $e){
-    echo "connection failure";
-}
-?>
-
-
-
-
 <!DOCTYPE html>
 
 <html>
@@ -34,7 +5,7 @@ catch(PDOException $e){
 <head>
     <meta charset="utf-8" />
     <title>Login</title>
-   
+
 </head>
 
 <body>

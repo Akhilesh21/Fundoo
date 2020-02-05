@@ -3,34 +3,6 @@ class Auth extends CI_Controller
 {
     public function login()
     {
-              
-        $this->form_validation->set_rules('username', 'Username', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
-        if($this->form_validation->run() == TRUE){
-
-            $username = $_POST['username']; 
-            $password = md5($_POST['password']);
-
-            $this->db->select('*');
-            $this->db->from('users');
-            $this->db->where(array('username' => $username,'password' => $password));
-            $query = $this->db->get();
-            $user = $query->row();
-            if($user->email){
-                      
-                $this->session->set_flashdata("success", "You are logged in");
-                $_SESSION['user_logged'] = TRUE;
-                $_SESSION['username'] = $user->username;
-
-                redirect("user/profile", "refresh");
-
-
-            } else {
-                $this->session->set_flashdata("error", "NO such account exists in database");
-                redirect("auth/login", "refresh");
-            }
-        }
-
 
         $this->load->view('login');
         //echo '  login page';
@@ -38,31 +10,61 @@ class Auth extends CI_Controller
 
     public function register()
     {
-        if(isset($_POST['register'])){
-            $this->form_validation->set_rules('username', 'Username', 'required');
-            $this->form_validation->set_rules('email', 'Email', 'required');
-            $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
-            $this->form_validation->set_rules('password', 'Confirm Password', 'required|min_length[5]|matches[password]');
+        $this->load->view('register');
+    }
+    public function registerdata()
+    {
+        $user = 'root';
+        $db = 'Sample';
+        $pwd = 'Admin@1234';
+        $host = 'localhost';
+        try {
+            $dbObject = new PDO("mysql:host=$host;dbname=$db", $user, $pwd);
+            if (isset($_POST['email']) && isset($_POST['name']) && isset($_POST['number']) && isset($_POST['password'])) {
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                $name = $_POST['name'];
+                $number = $_POST['number'];
+                $query = "INSERT INTO registration (name,number,email,password )VALUES ('$name','$number','$email','$password')";
+                $stmt = $dbObject->prepare($query);
+                if ($stmt->execute()) {
+                    echo "Your data saved in database";
+                } else {
+                    echo "Plz enter proper details";
+                }
+                $dbObject = null;
+            }
+        } catch (PDOException $e) {
+            echo "connection failure";
+        }
+    }
+    public function logindata()
+    {
 
-            $this->form_validation->set_rules('phone', 'Phone', 'required|min_length[10]');
-            
-            
-            if($this->form_validation->run() == TRUE){
-                echo 'form Validated';
-                  
-                $data = array(
-                    'username'=>$_POST['username'],
-                    'email'=>$_POST['email'],
-                    'password'=>$_POST['password'],
-                    'created_data' => date('Y-m-d'),
-                    'phone' => $_POST['phone']
-                );
-                $this->db->insert('users',$data);
-                $this->session->set_flashdata("success","Your account has been registered. You can login now");
-                redirect("auth/register", "refresh");
+        $host = 'localhost';
+        $db = 'Sample';
+        $admin = 'root';
+        $password = 'Admin@1234';
+
+        try {
+            $object = new PDO("mysql:host=$host;dbname=$db", $admin, $password);
+            if (isset($_POST['email']) && isset($_POST['password'])) {
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                $query = "SELECT * FROM registration WHERE email='$email' AND password = '$password'";
+                $statement = $object->prepare($query);
+                $statement->execute();
+                if ($statement->rowCount() > 0) {
+                    echo $email;
+                    $dbobject = null;
+                } else {
+                    echo "user doesn't exist";
+                }
 
             }
+        } catch (PDOException $e) {
+            echo "connection failure";
         }
-        $this->load->view('register');
+
     }
 }

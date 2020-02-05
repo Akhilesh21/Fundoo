@@ -1,105 +1,60 @@
-<?php
-$host = 'localhost';
-$db = 'Sample';
-$admin = 'root';
-$password = 'Admin@1234';
-
-try{
-    $object = new PDO("mysql:host=$host;dbname=$db",$admin,$password);
-      if(isset($_POST['email'])&&isset($_POST['password']) &&isset($_POST['number']) &&isset($_POST)){
-           $email = $_POST['email'];
-           $id = $_POST['password'];
-           $query = "SELECT * FROM table1 WHERE email='$email' AND ID = '$id'";
-           $statement = $object->prepare($query);
-           $statement->execute();
-           if($statement->rowCount()>0){
-             echo $email;
-             $dbobject = null;
-           }else
-           echo "user doesn't exist";
-       }
-            }
-catch(PDOException $e){
-    echo "connection failure";
-}
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
-
-
 <html>
-
 <head>
     <meta charset="utf-8" />
+    <h1><center> FUNDOO NOTES</center></h1>
+    <h1><center>REGISTRATION PAGE</center></h1>
+        
 
-    <title>Register Page</title>
+    <title>Registration Page</title>
+ 
 </head>
-
 <body>
-    <div>
-        <div class="register">Registeration Form</div>
+
+        <form method="POST" action="registerdata">
+         
+         
+      
+         
         <div class="alignment">
-            <div class="user">Name </div>
-            <input type="text" id="name" name="name">
-        </div>
-        <br />
-        <div class="alignment">
-            <div class="user">Email Id</div>
-            <input type="text" id="email" name="email">
-        </div>
-        
-        <br />
-        <div class="alignment">
-            <div class="user">Number</div>
-            <input type="text" id="number" name="number">
-        </div>
-        
-        <br />
-        <div class="alignment">
-            <div class="user">Password</div>
-            <input type="password" id="password" name="password">
-        </div>
-        <br />
-        <div class="alignment">
-            <div class="user">Confirm</div>
-            <input type="password" id="password" name="password">
-        </div>
-        <br />
-        <div class="buttons">
-            <div class="sign">
-                <input type="button" name="Sign Up" id="btn" onclick="btn" value="Sign Up" class="login" />
+                <div class="email">Name</div>
+                <input type="text" name="name" id="name" required>
             </div>
-           
-            <div class="sign">
-            <input type="submit" name="submit" value="SIGNUP" class="btn-login" />
+            <br />
 
+            <div class="alignment">
+                <div class="email">Number</div>
+                <input type="text" name="number" id="number" required>
             </div>
+            <br />
 
+            <div class="alignment">
+                <div class="email">Email</div>
+                <input type="text" name="email" id="email" required>
+            </div>
+            <br />
 
-        </div>
-    </div>
+            <div class="alignment">
+                <div class="email">Password</div>
+                <input type="PASSWORD" name="password" id="password" required>
+            </div>
+            <br />
+            <div class="buttons">
+                <div class="btn">
+                    <input type="submit" name="submit" value="REGISTER" class="btn-login" />
+                </div>
+            </div>
+        </form>
+
 
     <style>
-        .user {
-            width: 100 px;
+        .login {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 800;
+            padding: 20px;
         }
 
         .alignment {
@@ -108,13 +63,27 @@ catch(PDOException $e){
             align-items: center;
         }
 
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(218, 13, 13, 0.2);
+            transition: 0.3s;
+            background: #f3f3ee;
+            text-align: center;
+            width: 600px;
+            margin: 0 auto;
+            height: 550px;
+        }
+        .email {
+            width: 100px;
+        }
+
         .register {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20 px;
-            font-weight: 800;
-            padding: 20 px;
+            background: #36718c;
+            color: white;
+            outline: none;
+            width: 72px;
+            height: 28px;
+            border-radius: 9px;
+            border: 1px solid #aaa;
         }
 
         .buttons {
@@ -123,17 +92,7 @@ catch(PDOException $e){
             align-items: center;
         }
 
-        .login {
-            background: #36718c;
-            color: white;
-            outline: none;
-            width: 72px;
-            height: 28px;
-            border-radius: 9px;
-            border: 1px solid;
-        }
-
-        .sign {
+        .btn {
             width: 120px;
             display: flex;
             justify-content: center;
