@@ -55,7 +55,7 @@ class Auth extends CI_Controller
                 $statement = $object->prepare($query);
                 $statement->execute();
                 if ($statement->rowCount() > 0) {
-                    echo $email;
+                    echo "Welcome";
                     $dbobject = null;
                 } else {
                     echo "user doesn't exist";

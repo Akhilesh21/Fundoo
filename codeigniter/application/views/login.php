@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
     <meta charset="utf-8" />
     <title>Login</title>
-
 </head>
-
 <body>
-    <div>
+<form method="POST" action="logindata">
+
+
         <div class="login">Login</div>
         <form method="POST" action="#">
         <div class="alignment">
@@ -19,7 +17,7 @@
         <br />
         <div class="alignment">
             <div class="email">Password</div>
-            <input type="text" name="password" id="password">
+            <input type="password" name="password" id="password">
         </div>
         <br />
         <div class="buttons">
@@ -27,7 +25,7 @@
               <input type="submit" name="submit" value="LOGIN" class="btn-login" />
             </div>
         </div>
-    </div>
+        </form>
 
     <style>
         .login {
