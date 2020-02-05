@@ -39,4 +39,11 @@ class Auth extends CI_Controller
         }
     }
     public function logindata()
-  
+    {
+
+        $host = 'localhost';
+        $db = 'Sample';
+        $admin = 'root';
+        $password = 'Admin@1234';
+
+   
