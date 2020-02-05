@@ -25,4 +25,31 @@ class Mytest
             return $data;
         }
     }                                                                                                            
-  
+    public function insert()
+    {
+        if (isset($_POST["name"])) {
+            $form_data = array(
+                ':name' => $_POST["name"],
+                ':email' => $_POST["email"],
+            );
+            $query = "INSERT INTO table1(name, email) VALUES(:name, :email)";
+            $statement = $this->connect->prepare($query);
+            if ($statement->execute($form_data)) {
+                $data[] = array(
+                    'success' => 'inserted',
+                );
+            } else {
+                $data[] = array(
+                    'fail' => 'not inserted',
+                );
+            }
+        } else {
+            $data[] = array(
+                'fail' => 'set the name',
+            );
+        }
+        echo json_encode($data);
+        return $data;
+    }
+
+    
