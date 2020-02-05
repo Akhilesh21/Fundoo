@@ -1,7 +1,4 @@
 <?php
-
-/*
- */
 class Mytest
 {
     private $connect = '';
@@ -24,7 +21,7 @@ class Mytest
             echo json_encode($data);
             return $data;
         }
-    }                                                                                                            
+    }
     public function insert()
     {
         if (isset($_POST["name"])) {
