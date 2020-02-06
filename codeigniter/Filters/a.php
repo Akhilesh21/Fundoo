@@ -1,4 +1,11 @@
 <?php
-$a = 5;
-echo $a+$a."\n";
+interface A{
+
+}
+class B implements A{
+
+}
+class C extends B{
+
+}  
 ?>

@@ -1,14 +1,67 @@
 <html>
     <body>
+        <style>
+            div
+            {
+                display: none;
+                border:2px solid black;
+                width:200px;
+                height:100px;
+                padding: 5px;
+            }
+        </style>
+        <script>
+            
+            document.addEventListener("click",hide1)
+            function hide1()
+            {
+                if(document.getElementById("1").checked)
+                document.getElementById("cont1").style.display = "block";
+                else
+                document.getElementById("cont1").style.display = "none";
+            }
+               
+            document.addEventListener("click",hide2)
+            function hide2()
+            {
+                if(document.getElementById("2").checked)
+                document.getElementById("cont2").style.display = "block";
+                else
+                document.getElementById("cont2").style.display = "none";
+            }
+            
+            document.addEventListener("click",hide3)
+            function hide3()
+            {
+                if(document.getElementById("3").checked)
+                document.getElementById("cont3").style.display = "block";
+                else
+                document.getElementById("cont3").style.display = "none";
+            }
+            
+
+
+            </script>
+        <form action="b1.php" method="POST">
         <pre>
             <input type="radio" name="op" value="1" id="1">Area of rectangle<br>
-            <input type="radio" name="op" value="1" id="1">Area of square<br>
-            <input type="radio" name="op" value="1" id="1">Area of circle<br>
-            
-            Enter radius<input type="number" name="b"><br>
-            Enter length<input type="number" name="b"><br>
+            <input type="radio" name="op" value="2" id="2">Area of square<br>
+            <input type="radio" name="op" value="3" id="3">Area of circle<br>
+
+
+            <div id="cont1" style="height:200px" >
+            Enter length<input type="number" name="l"><br>
             Enter breadth<input type="number" name="b"><br>
+            </div>
+            
+            <div id="cont2" style="height:60px">
             Enter side<input type="number" name="s"><br>
+            </div>
+
+            <div id="cont3" >
+
+            Enter side<input type="number" name="s"><br>
+            </div>
 
     <input type="submit" name="submit" value="submit"><br>
 
@@ -48,7 +101,7 @@
         {
             parent::area();
         }
-    }
+    }      
     class circle implements area{
         protected $rad;
         public function circle($rad)
