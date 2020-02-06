@@ -1,15 +1,19 @@
 <html>
     <body>
         <pre>
-            <input type="radio" name="op" value="1">Area of rectangle<br>
-            <input type="radio" name="op" value="1">Area of square<br>
-            <input type="radio" name="op" value="1">Area of circle<br>
-    Enter breadth<input type="number" name="b"><br>
+            <input type="radio" name="op" value="1" id="1">Area of rectangle<br>
+            <input type="radio" name="op" value="1" id="1">Area of square<br>
+            <input type="radio" name="op" value="1" id="1">Area of circle<br>
+            
+            Enter radius<input type="number" name="b"><br>
+            Enter length<input type="number" name="b"><br>
+            Enter breadth<input type="number" name="b"><br>
+            Enter side<input type="number" name="s"><br>
 
-    Enter side<input type="number" name="s"><br>
     <input type="submit" name="submit" value="submit"><br>
 
     <?php
+    if(isset($_POST['submit'])){
     $op=$_POST['op'];
     $rad=$_POST['rad'];
     $l=$_POST['l'];
@@ -64,6 +68,7 @@
     elseif($op == '2'){
         $o = new square();
     }
+}
     ?>
 
     </body>
