@@ -29,6 +29,8 @@
               <input type="submit" name="submit" value="LOGIN" class="btn-login" />
             </div>
         </div>
+        <center><span class="reg">New User? <a href="register">Register</a></span></center>
+           
         </form>
 
     <style>

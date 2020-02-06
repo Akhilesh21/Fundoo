@@ -41,9 +41,14 @@
             <br />
             <div class="buttons">
                 <div class="btn">
-                    <input type="submit" name="submit" value="REGISTER" class="btn-login" />
+                    <input type="submit" name="submit" value="REGISTER" class="btn-login" /><br>
+
                 </div>
-            </div>
+
+                </div>
+                <center><span class="reg">New User? <a href="login">login</a></span></center>
+
+              
         </form>
 
 

@@ -1,10 +1,9 @@
 <?php
 echo "Enter the price :";
-$price =  readline();
+$price = readline();
 $vprice = filter_var($price, FILTER_VALIDATE_FLOAT);
-if($vprice == FALSE){
+if ($vprice) {
+    echo "price is valid " . $vprice . "\n";
+} else {
     echo "Invalid Price\n";
-    }else{
-        echo "price is valid ".$vprice."\n";
-    }
-?>
+}
