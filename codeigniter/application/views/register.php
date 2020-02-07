@@ -46,7 +46,7 @@
                 </div>
 
                 </div>
-                <center><span class="reg">New User? <a href="login">login</a></span></center>
+                <center><span class="reg">Existing   User? <a href="login">login</a></span></center>
 
               
         </form>

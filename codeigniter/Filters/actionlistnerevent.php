@@ -4,9 +4,9 @@
             div
             {
                 display: none;
-                border:2px solid black;
-                width:200px;
-                height:100px;
+                border:2px solid red;
+                width:30%;
+                height:20%;
                 padding: 5px;
             }
         </style>
@@ -55,7 +55,7 @@
             </div>
             
             <div id="cont2" style="height:60px">
-            Enter side<input type="number" name="s"><br>
+            Enter side<input type="number" name=""><br>
             </div>
 
             <div id="cont3" >

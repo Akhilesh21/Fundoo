@@ -49,7 +49,7 @@ class Mytest
         return $data;
     }
 
-    public function delete()
+  public function delete()
     {
         if (isset($_POST['ID'])) {
             $form_data = array(

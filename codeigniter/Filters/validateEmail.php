@@ -1,4 +1,5 @@
 <?php
+//PHP filters are used to validate and sanitize external input.
 echo "Enter email address: ";
 $email = readline();
 $vemail = filter_var($email, FILTER_VALIDATE_EMAIL);
